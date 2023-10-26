@@ -20,13 +20,16 @@ export class TasksService {
       ...title,
     };
     this.tasks.push(task);
+    return 'Task added successfully';
   }
 
   removeTask(id: string) {
     const index = this.tasks.findIndex((task) => task.id === id);
     if (index !== -1) {
       this.tasks.splice(index, 1);
+      return true;
     }
+    return false;
   }
 
   updateTask(id: string, task: TaskUpdate) {
@@ -36,6 +39,8 @@ export class TasksService {
         ...this.tasks[index],
         ...task,
       };
+      return true;
     }
+    return false;
   }
 }
